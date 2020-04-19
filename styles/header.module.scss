@@ -1,0 +1,40 @@
+// colors
+// https://coolors.co/1b1b1b-bc6c69-d6cfc9-f2e8e5-a9ba9d
+
+$primary-color: #40798c;
+
+.header {
+  display: flex;
+
+  top: 0;
+
+  padding: 6px 20px;
+
+  background-color: $primary-color;
+  color: white;
+
+  z-index: 2;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+
+  font-size: 1.4rem;
+
+  color: white;
+  cursor: pointer;
+
+  &:active,
+  &:hover,
+  &:focus {
+    color: white;
+    text-decoration: underline;
+  }
+}
+
+.logo {
+  height: 50px;
+  width: auto;
+  margin-right: 8px;
+}

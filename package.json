@@ -1,0 +1,39 @@
+{
+  "name": "hellothankyouyesno",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "detect-browser-language": "^0.0.2",
+    "isomorphic-unfetch": "^3.0.0",
+    "next": "9.3.3",
+    "next-pwa": "^2.3.3",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-transition-group": "^4.3.0",
+    "sass": "^1.26.3",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^0.88.2",
+    "yarn": "^1.22.4"
+  },
+  "devDependencies": {
+    "@google-cloud/translate": "^5.3.0",
+    "@testing-library/jest-dom": "^5.4.0",
+    "@testing-library/react": "^10.0.2",
+    "jest-fetch-mock": "^3.0.3"
+  },
+  "jest": {
+    "automock": false,
+    "setupFiles": [
+      "./setupJest.js"
+    ]
+  }
+}

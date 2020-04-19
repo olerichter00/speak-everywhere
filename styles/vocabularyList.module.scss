@@ -1,0 +1,18 @@
+.vocabularyList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  margin: 20px auto;
+
+  max-width: 1000px;
+}
+
+.notFound {
+  font-size: 1.2rem;
+  line-height: 1.4rem;
+
+  text-align: center;
+
+  margin-top: 80px;
+}
