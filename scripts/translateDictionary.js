@@ -3,7 +3,7 @@ const fs = require("fs")
 
 const translate = new Translate()
 
-const DICTIONARY_FILE = "./dictionary.json"
+const DICTIONARY_FILE = "./data/dictionary.json"
 
 const vocabularies = {
   hello: "Hello",
@@ -17,8 +17,6 @@ const vocabularies = {
 
 const dictionary = JSON.parse(fs.readFileSync(DICTIONARY_FILE))
 
-fs.writeFileSync(`${DICTIONARY_FILE}-${Date.now()}`, JSON.stringify(dictionary))
-
 translateAll()
 
 async function translateAll() {
@@ -28,7 +26,7 @@ async function translateAll() {
 
   await asyncForEach(
     Object.keys(dictionary),
-    async (language) => {
+    async (language, index) => {
       const newTranslations = {}
 
       try {
@@ -49,20 +47,17 @@ async function translateAll() {
           {},
         )
       } catch (error) {
-        console.error(`ERROR (language: ${language})`, error)
+        console.error(`ERROR (language: ${language})`)
+      } finally {
+        console.log(`${index + 1}/${Object.keys(dictionary).length}`)
       }
 
       newDictionary[language] = { ...dictionary[language], ...newTranslations }
-
-      console.log(`${language}: `, newDictionary[language])
-
-      fs.writeFileSync(`${DICTIONARY_FILE}-tmp`, JSON.stringify(newDictionary))
     },
     {},
   )
 
-  console.log(newDictionary)
-  fs.writeFileSync(DICTIONARY_FILE, JSON.stringify(newDictionary))
+  // fs.writeFileSync(DICTIONARY_FILE, JSON.stringify(newDictionary))
 
   console.log("FINISHED")
 }

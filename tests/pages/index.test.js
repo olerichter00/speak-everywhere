@@ -16,19 +16,19 @@ const translations = {
 }
 
 beforeEach(() => {
-  const result = {
-    country_code: "DE",
-  }
-
-  fetch.mockResponse(JSON.stringify(result))
+  fetch.mockResponse(
+    JSON.stringify({
+      country_code: "DE",
+    }),
+  )
 })
 
 describe("Index Page", () => {
   it("renders all translations", async () => {
-    const { findByText, findAllByText } = render(<Index />)
+    const { findByText } = render(<Index />)
 
-    expect(await findByText(/Germany/i)).toBeTruthy()
-    expect(await findAllByText(/German/i)).toBeTruthy()
+    expect(await findByText("Germany")).toBeTruthy()
+    expect(await findByText("German")).toBeTruthy()
 
     fireEvent.click(await findByText("Learn"))
 
