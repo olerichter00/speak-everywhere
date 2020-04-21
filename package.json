@@ -6,8 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "jest",
-    "test:watch": "jest --watch",
+    "test": "jest --env=jest-environment-jsdom-sixteen",
+    "test:watch": "jest --watch  --env=jest-environment-jsdom-sixteen",
     "test:coverage": "jest --coverage"
   },
   "dependencies": {
@@ -28,12 +28,17 @@
     "@google-cloud/translate": "^5.3.0",
     "@testing-library/jest-dom": "^5.4.0",
     "@testing-library/react": "^10.0.2",
+    "jest-css-modules": "^2.1.0",
+    "jest-environment-jsdom-sixteen": "^1.0.3",
     "jest-fetch-mock": "^3.0.3"
   },
   "jest": {
     "automock": false,
     "setupFiles": [
-      "./setupJest.js"
-    ]
+      "./jest.setup.js"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less|scss|sss|styl)$": "<rootDir>/node_modules/jest-css-modules"
+    }
   }
 }

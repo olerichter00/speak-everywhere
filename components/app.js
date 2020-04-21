@@ -27,7 +27,7 @@ const App = () => {
 
   useEffect(() => setCountry(DEFAULT_COUNTRY), [errorCountry])
 
-  if (loadingCountry) return <Pending />
+  if (loadingCountry) return <Pending text="Getting your current location..." />
 
   return (
     <div>
