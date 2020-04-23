@@ -42,23 +42,25 @@ const Navigation = ({
             : `${styles.section} ${styles.hiddenSection}`
         }
       >
-        <h1 className={styles.title}>Speak Everywhere</h1>
-        <div className={styles.subtitle}>
-          Lern the most useful words and phrases whereever you are.
-        </div>
-        {errorDetectingCountry ? null : (
-          <div className={styles.text}>
-            You are in <b>{country && countries[country].names["en"]}</b>.{" "}
-            <br />
-            It's time to learn some{" "}
-            <b>
-              {countryLanguages &&
-                countryLanguages[locationLanguage] &&
-                countryLanguages[locationLanguage]["en"]}
-              !
-            </b>
+        <div className={styles.sectionContent}>
+          <h1 className={styles.title}>Speak Everywhere</h1>
+          <div className={styles.subtitle}>
+            Lern the most useful words and phrases whereever you are.
           </div>
-        )}
+          {errorDetectingCountry ? null : (
+            <div className={styles.text}>
+              You are in <b>{country && countries[country].names["en"]}</b>.{" "}
+              <br />
+              It's time to learn some{" "}
+              <b>
+                {countryLanguages &&
+                  countryLanguages[locationLanguage] &&
+                  countryLanguages[locationLanguage]["en"]}
+                !
+              </b>
+            </div>
+          )}
+        </div>
       </div>
       <div className={styles.selectors}>
         <div className={styles.selector}>
@@ -90,7 +92,7 @@ const Navigation = ({
             : `${styles.section} ${styles.hiddenSection}`
         }
       >
-        <div>
+        <div className={styles.sectionContent}>
           <Button
             primary
             style={{

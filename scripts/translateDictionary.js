@@ -57,7 +57,7 @@ async function translateAll() {
     {},
   )
 
-  // fs.writeFileSync(DICTIONARY_FILE, JSON.stringify(newDictionary))
+  fs.writeFileSync(DICTIONARY_FILE, JSON.stringify(newDictionary))
 
   console.log("FINISHED")
 }
@@ -74,12 +74,12 @@ async function translateText(text, target) {
   return translations[0]
 }
 
+function capitalize(input) {
+  return input.replace(/^\w/, (c) => c.toUpperCase())
+}
+
 async function asyncForEach(array, callback) {
   for (let index = 0; index < array.length; index++) {
     await callback(array[index], index, array)
   }
-}
-
-function capitalize(input) {
-  return input.replace(/^\w/, (c) => c.toUpperCase())
 }

@@ -44,10 +44,7 @@ const Select = ({ title, setter, selected, trigger, options, allOptions }) => {
 
         {allOptions && !showAll && (
           <div className={styles.listActions}>
-            <Button
-              style={{ backgroundColor: "#D6CFC9", color: "white" }}
-              onClick={() => setShowAll(true)}
-            >
+            <Button primary onClick={() => setShowAll(true)}>
               Show All
             </Button>
           </div>
