@@ -58,7 +58,7 @@
   list-style: none;
 
   height: auto;
-  max-height: 340px;
+  max-height: 350px;
 
   transition: max-height 400ms cubic-bezier(1, -0.02, 0, 0.42), opacity 400ms;
 
@@ -80,18 +80,19 @@
   font-size: 2.8rem;
   line-height: 3.2rem;
   font-weight: 500;
-  padding: 3rem 0 1rem 0;
+  padding-top: 2rem;
+  paddin-bottom: 1rem;
 }
 
 .subtitle {
   font-size: 1.6rem;
   line-height: 2rem;
-  padding: 1rem;
+  padding-bottom: 1rem;
 }
 
 .text {
   font-size: 1.2rem;
   line-height: 2rem;
 
-  padding: 1rem;
+  padding-bottom: 1rem;
 }
