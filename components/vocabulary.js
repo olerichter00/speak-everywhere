@@ -14,13 +14,13 @@ const Vocabulary = ({ language, dictionary, userDictionary, vocabulary }) => {
 
   return (
     <div
-      className={className(styles.container, {
-        [styles.containerWithPointer]: withAudio,
+      className={className(styles.vocabulary, {
+        [styles.vocabularyWithPointer]: withAudio,
       })}
       onClick={withAudio && (() => play())}
     >
-      <h2>{dictionary[vocabulary]}</h2>
-      <p>{userDictionary[vocabulary]}</p>
+      <h2 className={styles.title}>{dictionary[vocabulary]}</h2>
+      <div className={styles.subtitle}>{userDictionary[vocabulary]}</div>
       {withAudio && (
         <div
           className={className(styles.icon, {
