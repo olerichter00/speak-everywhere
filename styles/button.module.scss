@@ -35,7 +35,7 @@
 
 .primary {
   background-color: $secondary-color;
-  color: white;
+  color: $white;
 
   box-shadow: none;
 
@@ -43,7 +43,7 @@
   &:hover,
   &:focus {
     background-color: lighten($secondary-color, 4%);
-    color: white !important;
+    color: $white;
     box-shadow: none;
   }
 }

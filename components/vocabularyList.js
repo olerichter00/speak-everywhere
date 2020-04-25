@@ -50,7 +50,7 @@ const VocabularyList = () => {
         ))
       ) : (
         <div className={styles.notFound}>
-          {`Sorry, there are no translations for ${allLanguages[language][DEFAULT_LANGUAGE]} yet.`}
+          {`Sorry, there are no translations for ${allLanguages[locationLanguage][DEFAULT_LANGUAGE]} yet.`}
         </div>
       )}
     </div>

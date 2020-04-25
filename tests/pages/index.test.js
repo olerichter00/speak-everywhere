@@ -5,17 +5,29 @@ import "@testing-library/jest-dom/extend-expect"
 
 import Index from "../../pages/index"
 
-const translations = {
-  hello: "Hallo",
-  thanks: "Danke",
-  yes: "Ja",
-  no: "Nein",
-  sorry: "Es tut mir Leids",
-  "How are you?": "Wie gehts?",
-  goodbye: "Auf Wiedersehen",
-}
+const userTranslations = [
+  "Hello",
+  "Thank You",
+  "Yes",
+  "No",
+  "I’m Sorry",
+  "How are you?",
+  "Goodbye",
+]
+
+const locationTranslations = [
+  "Hallo",
+  "Danke",
+  "Ja",
+  "Nein",
+  "Es tut mir Leid",
+  "Wie gehts?",
+  "Auf Wiedersehen",
+]
 
 beforeEach(() => {
+  navigator.__defineGetter__("languages", () => ["en-US"])
+
   fetch.mockResponse(
     JSON.stringify({
       country_code: "DE",
@@ -32,9 +44,10 @@ describe("Index Page", () => {
 
     fireEvent.click(await findByText("Learn"))
 
-    for (let i = 0; i < translations.length; i++) {
-      expect(await findByText(Object.keys(translations)[i])).toBeTruthy()
-      expect(await findByText(translations[i])).toBeTruthy()
+    for (let i = 0; i < userTranslations.length; i++) {
+      expect(await findByText(userTranslations[i])).toBeTruthy()
+
+      expect(await findByText(locationTranslations[i])).toBeTruthy()
     }
   })
 })
