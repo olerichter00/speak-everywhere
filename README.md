@@ -1,6 +1,8 @@
 ![Speak Everywhere](./public/logo.png)
 
-**Speak Everywhere** is a language learning app that automatically detects the user's location and provides basic vocabulary and phrases of the local languages.
+**Speak Everywhere** is a language learning app that automatically
+detects the user's location and provides basic vocabulary and phrases to
+learn the local language.
 
 The app is available at [speakeverywhere.now.sh](https://speakeverywhere.now.sh/).
 

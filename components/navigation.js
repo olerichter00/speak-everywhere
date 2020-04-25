@@ -4,12 +4,7 @@ import classNames from "classnames"
 
 import { LanguageSelect, CountrySelect, Button } from "."
 
-import {
-  allLanguages,
-  availableLanguages,
-  allCountries,
-  languagesFor,
-} from "../utils/data"
+import { availableLanguages, allCountries, languagesFor } from "../utils/data"
 
 import styles from "../styles/navigation.module.scss"
 

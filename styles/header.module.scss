@@ -4,8 +4,7 @@
   position: relative;
 
   display: flex;
-
-  top: 0;
+  justify-content: space-between;
 
   padding: 6px 20px;
 
@@ -62,5 +61,12 @@
   height: 50px;
   width: auto;
   margin-right: 8px;
+  z-index: 3;
+}
+
+.about {
+  display: flex;
+  align-items: center;
+
   z-index: 3;
 }
