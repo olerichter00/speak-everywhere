@@ -7,7 +7,7 @@ import {
   DEFAULT_LANGUAGE,
 } from "../utils/data"
 
-const LanguageSelect = ({ setter, selected, languages, showMoreButton }) => {
+const LanguageSelect = ({ setter, selected, languages, hasShowAllButton }) => {
   if (!selected) return <></>
 
   const options = Object.entries(languages).map(([language, names]) => ({
@@ -16,8 +16,6 @@ const LanguageSelect = ({ setter, selected, languages, showMoreButton }) => {
   }))
 
   const allOptions = () => {
-    if (!showMoreButton) return null
-
     return Object.entries(availableLanguages).map(([language, names]) => ({
       key: language,
       text: names[DEFAULT_LANGUAGE],
@@ -35,7 +33,8 @@ const LanguageSelect = ({ setter, selected, languages, showMoreButton }) => {
         </Button>
       }
       options={options}
-      allOptions={allOptions()}
+      hasShowAllButton={hasShowAllButton}
+      allOptions={allOptions}
     />
   )
 }

@@ -1,7 +1,11 @@
 import React from "react"
 
-import { App } from "../components"
+import { App, AppContextProvider } from "../components"
 
-const Index = () => <App />
+const Index = () => (
+  <AppContextProvider>
+    <App />
+  </AppContextProvider>
+)
 
 export default Index

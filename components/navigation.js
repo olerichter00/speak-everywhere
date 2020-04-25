@@ -1,32 +1,31 @@
-import React from "react"
+import React, { useContext } from "react"
 import { Icon } from "semantic-ui-react"
 import classNames from "classnames"
 
-import { LanguageSelect, CountrySelect, Button } from "."
-
+import { AppContext, LanguageSelect, CountrySelect, Button } from "."
 import { availableLanguages, allCountries, languagesFor } from "../utils/data"
-
 import styles from "../styles/navigation.module.scss"
 
-const Navigation = ({
-  userLanguage,
-  locationLanguage,
-  country,
-  errorDetectingCountry,
-  setUserLanguage,
-  setCountry,
-  setLocationLanguage,
-  extended,
-  setExtended,
-}) => {
+const Navigation = () => {
+  const {
+    extendedNavigation,
+    setExtendedNavigation,
+    country,
+    errorCountry,
+    userLanguage,
+    setUserLanguage,
+    locationLanguage,
+    setLocationLanguage,
+  } = useContext(AppContext)
+
   const countryLanguages = languagesFor(country)
 
   const navigationClasses = classNames(styles.navigation, {
-    [styles.extendedNavigation]: extended,
+    [styles.extendedNavigation]: extendedNavigation,
   })
 
   const sectionClasses = classNames(styles.section, {
-    [styles.hiddenSection]: !extended,
+    [styles.hiddenSection]: !extendedNavigation,
   })
 
   return (
@@ -37,7 +36,7 @@ const Navigation = ({
           <div className={styles.subtitle}>
             Lern the most useful words and phrases whereever you are.
           </div>
-          {errorDetectingCountry ? null : (
+          {errorCountry ? null : (
             <div className={styles.text}>
               You are in <b>{country && allCountries[country].names["en"]}</b>
               . <br />
@@ -64,20 +63,20 @@ const Navigation = ({
           <Icon name="long arrow alternate right" />
         </div>
         <div className={styles.selector}>
-          <CountrySelect selected={country} setter={setCountry} />
+          <CountrySelect />
         </div>
         <div className={styles.selector}>
           <LanguageSelect
             selected={locationLanguage}
             setter={setLocationLanguage}
             languages={countryLanguages}
-            showMoreButton
+            hasShowAllButton
           />
         </div>
       </div>
       <div className={sectionClasses}>
         <div className={styles.cta}>
-          <Button primary onClick={() => setExtended(false)}>
+          <Button primary onClick={() => setExtendedNavigation(false)}>
             Learn
           </Button>
         </div>

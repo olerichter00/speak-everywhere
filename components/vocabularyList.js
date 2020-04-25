@@ -1,54 +1,57 @@
-import React from "react"
+import React, { useContext } from "react"
 import { CSSTransition, SwitchTransition } from "react-transition-group"
 import classNames from "classnames"
 
-import Vocabulary from "./vocabulary"
-import { allLanguages, DEFAULT_LANGUAGE } from "../utils/data"
+import { Vocabulary, AppContext } from "."
+import { dictionary, allLanguages, DEFAULT_LANGUAGE } from "../utils/data"
 
 import fadeStyles from "../styles/transitions/fade.module.scss"
 import styles from "../styles/vocabularyList.module.scss"
 
-const VocabularyList = ({
-  dictionary,
-  userDictionary,
-  language,
-  userLanguage,
-  loading,
-  extended,
-}) => {
-  if (loading) return <></>
+const VocabularyList = () => {
+  const {
+    extendedNavigation,
+    locationLanguage,
+    userLanguage,
+    loadingCountry,
+  } = useContext(AppContext)
 
-  const noTranslationFound = !dictionary || !userDictionary
+  if (loadingCountry) return <></>
+
+  const currentDictionary = dictionary[locationLanguage]
+  const currentUserDictionary = dictionary[userLanguage]
+
+  const translationsFound = currentDictionary && currentUserDictionary
 
   return (
     <div
       className={classNames(styles.vocabularyList, {
-        [styles.hiddenVocabularyList]: extended,
+        [styles.hiddenVocabularyList]: extendedNavigation,
       })}
     >
-      {noTranslationFound ? (
-        <div className={styles.notFound}>
-          {`Sorry, there are no translations for ${allLanguages[language][DEFAULT_LANGUAGE]} yet.`}
-        </div>
-      ) : (
-        Object.keys(dictionary).map((vocabulary) => (
+      {translationsFound ? (
+        Object.keys(currentDictionary).map((vocabulary) => (
           <SwitchTransition key={vocabulary}>
             <CSSTransition
-              key={`${userLanguage}-${language}-${vocabulary}`}
+              key={`${userLanguage}-${locationLanguage}-${vocabulary}`}
               addEndListener={(node, done) =>
                 node.addEventListener("transitionend", done, false)
               }
               classNames={fadeStyles}
             >
               <Vocabulary
-                language={language}
-                dictionary={dictionary}
-                userDictionary={userDictionary}
+                language={locationLanguage}
+                dictionary={currentDictionary}
+                userDictionary={currentUserDictionary}
                 vocabulary={vocabulary}
               />
             </CSSTransition>
           </SwitchTransition>
         ))
+      ) : (
+        <div className={styles.notFound}>
+          {`Sorry, there are no translations for ${allLanguages[language][DEFAULT_LANGUAGE]} yet.`}
+        </div>
       )}
     </div>
   )

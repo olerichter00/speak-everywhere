@@ -12,18 +12,16 @@ const Header = ({ extended = false } = {}) => {
     [styles.extendedHeader]: extended,
   })
 
+  const onLogoClick = () =>
+    router.pathname === "/" ? window.location.reload() : router.push("/")
+
   return (
     <div className={headerClasses}>
-      <a
-        className={styles.title}
-        onClick={() =>
-          router.pathname === "/" ? window.location.reload() : router.push("/")
-        }
-      >
+      <a className={styles.logoContainer} onClick={onLogoClick}>
         <img
           className={styles.logo}
           src="logo_white.png"
-          alt="SpeakEverywhere"
+          alt="Speak Everywhere"
         />
       </a>
       <div className={styles.about}>

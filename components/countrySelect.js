@@ -1,11 +1,12 @@
-import React from "react"
+import React, { useContext } from "react"
 
-import { Select, Flag, Button } from "."
-
+import { AppContext, Select, Flag, Button } from "."
 import { DEFAULT_LANGUAGE, allCountries } from "../utils/data"
 
-const CountrySelect = ({ selected, setter }) => {
-  if (!selected) return <></>
+const CountrySelect = () => {
+  const { country, setCountry } = useContext(AppContext)
+
+  if (!country) return <></>
 
   const options = Object.entries(allCountries).map(([iso, { names }]) => ({
     key: iso,
@@ -15,11 +16,11 @@ const CountrySelect = ({ selected, setter }) => {
   return (
     <Select
       title="Language"
-      setter={setter}
-      selected={selected}
+      setter={setCountry}
+      selected={country}
       trigger={
         <Button aria-label="Select Country">
-          <Flag name={selected.toLowerCase()} />
+          <Flag name={country.toLowerCase()} />
         </Button>
       }
       options={options}

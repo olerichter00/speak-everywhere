@@ -5,11 +5,19 @@ import { Button } from "."
 
 import styles from "../styles/select.module.scss"
 
-const Select = ({ title, setter, selected, trigger, options, allOptions }) => {
+const Select = ({
+  title,
+  setter,
+  selected,
+  trigger,
+  options,
+  hasShowAllButton,
+  allOptions,
+}) => {
   if (!selected) return <></>
 
   const [open, setOpen] = useState(false)
-  const [showAll, setShowAll] = useState(false)
+  const [showAllOptions, setshowAllOptions] = useState(false)
 
   const onSelect = (value) => {
     setter(value)
@@ -19,10 +27,10 @@ const Select = ({ title, setter, selected, trigger, options, allOptions }) => {
 
   const onClose = () => {
     setOpen(false)
-    setShowAll(false)
+    setshowAllOptions(false)
   }
 
-  const currentOptios = showAll ? allOptions : options
+  const currentOptios = showAllOptions ? allOptions() : options
 
   const selectors = currentOptios.map(({ key, text }) => (
     <div className={styles.listItem} key={key}>
@@ -42,9 +50,9 @@ const Select = ({ title, setter, selected, trigger, options, allOptions }) => {
       <Modal.Content scrolling>
         <div className={styles.list}>{selectors}</div>
 
-        {allOptions && !showAll && (
+        {hasShowAllButton && !showAllOptions && (
           <div className={styles.listActions}>
-            <Button primary onClick={() => setShowAll(true)}>
+            <Button primary onClick={() => setshowAllOptions(true)}>
               Show All
             </Button>
           </div>
