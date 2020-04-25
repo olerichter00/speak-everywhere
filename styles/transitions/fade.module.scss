@@ -1,3 +1,5 @@
+@import "../variables";
+
 .enter {
   opacity: 0;
   transform: translateX(-100%);
@@ -16,5 +18,5 @@
 }
 .enterActive,
 .exitActive {
-  transition: opacity 500ms, transform 500ms;
+  transition: opacity $medium-transition, transform $medium-transition;
 }

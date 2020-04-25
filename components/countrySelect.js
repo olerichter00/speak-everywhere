@@ -2,14 +2,12 @@ import React from "react"
 
 import { Select, Flag, Button } from "."
 
-import countries from "../data/countries"
-
-const DEFAULT_LANGUAGE = "en"
+import { DEFAULT_LANGUAGE, allCountries } from "../utils/data"
 
 const CountrySelect = ({ selected, setter }) => {
   if (!selected) return <></>
 
-  const options = Object.entries(countries).map(([iso, { names }]) => ({
+  const options = Object.entries(allCountries).map(([iso, { names }]) => ({
     key: iso,
     text: names[DEFAULT_LANGUAGE],
   }))

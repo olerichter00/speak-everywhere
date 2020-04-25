@@ -13,7 +13,7 @@
   "AL": { "names": { "en": "Albania" }, "languages": ["sq", "el"] },
   "AM": { "names": { "en": "Armenia" }, "languages": ["hy"] },
   "AO": { "names": { "en": "Angola" }, "languages": ["pt-AO"] },
-  "AQ": { "names": { "en": "Antarctica" }, "languages": [""] },
+  "AQ": { "names": { "en": "Antarctica" }, "languages": ["en"] },
   "AR": {
     "names": { "en": "Argentina" },
     "languages": ["es-AR", "en", "it", "de", "fr", "gn"]
@@ -65,7 +65,7 @@
   },
   "BS": { "names": { "en": "Bahamas" }, "languages": ["en-BS"] },
   "BT": { "names": { "en": "Bhutan" }, "languages": ["dz"] },
-  "BV": { "names": { "en": "Bouvet Island" }, "languages": [""] },
+  "BV": { "names": { "en": "Bouvet Island" }, "languages": ["en"] },
   "BW": { "names": { "en": "Botswana" }, "languages": ["en-BW", "tn-BW"] },
   "BY": { "names": { "en": "Belarus" }, "languages": ["be", "ru"] },
   "BZ": { "names": { "en": "Belize" }, "languages": ["en-BZ", "es"] },
@@ -202,7 +202,7 @@
   },
   "HM": {
     "names": { "en": "Heard Island and McDonald Islands" },
-    "languages": [""]
+    "languages": ["en"]
   },
   "HN": { "names": { "en": "Honduras" }, "languages": ["es-HN", "cab", "miq"] },
   "HR": { "names": { "en": "Croatia" }, "languages": ["hr-HR", "sr"] },

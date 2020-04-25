@@ -1,6 +1,8 @@
 @import "variables";
 
 .header {
+  position: relative;
+
   display: flex;
 
   top: 0;
@@ -9,8 +11,34 @@
 
   background-color: $primary-color;
   color: white;
+}
 
-  z-index: 2;
+.header::before {
+  content: "";
+
+  height: 0px;
+
+  position: absolute;
+  left: 50%;
+  width: 160vw;
+  border-radius: 50%;
+  background: inherit;
+  transform: translateX(-50%) translateY(50%);
+  bottom: 0px;
+
+  transition: height $medium-transition ease-out;
+
+  @media screen and (max-width: 800px) {
+    width: 220vw;
+  }
+
+  @media screen and (max-width: 400px) {
+    width: 300vw;
+  }
+}
+
+.extendedHeader::before {
+  height: 1000px;
 }
 
 .title {
@@ -34,4 +62,5 @@
   height: 50px;
   width: auto;
   margin-right: 8px;
+  z-index: 3;
 }

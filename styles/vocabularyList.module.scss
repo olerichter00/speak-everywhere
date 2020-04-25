@@ -8,6 +8,15 @@
   margin: 20px auto;
 
   max-width: 1000px;
+
+  opacity: 1;
+  transition: opacity $medium-transition linear $short-transition-delay;
+}
+
+.hiddenVocabularyList {
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
 }
 
 .notFound {

@@ -2,7 +2,7 @@ import "semantic-ui-css/semantic.min.css"
 
 import Head from "next/head"
 
-import { Header } from "../components"
+import "../styles/main.scss"
 
 export default function MyApp({ Component, pageProps }) {
   return (
@@ -27,7 +27,6 @@ export default function MyApp({ Component, pageProps }) {
         <link href="/favicon.png" rel="apple-touch-icon"></link>
         <meta name="theme-color" content="#ed553b" />
       </Head>
-      <Header />
       <Component {...pageProps} />
     </div>
   )

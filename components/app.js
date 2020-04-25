@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react"
 
-import { VocabularyList, Navigation, Pending } from "."
+import { Header, VocabularyList, Navigation, Pending } from "."
 import { useDetectCountry, useDetectUserLanguage } from "../hooks"
-import { normalizeLanguage } from "../utils"
-import countries from "../data/countries"
-import dictionary from "../data/dictionary"
+import normalizeLanguage from "../utils/normalizeLanguage"
 
-const DEFAULT_LANGUAGE = "en"
-const DEFAULT_COUNTRY = "DE"
+import {
+  allCountries,
+  dictionary,
+  DEFAULT_LANGUAGE,
+  DEFAULT_COUNTRY,
+} from "../utils/data"
 
 const App = () => {
   const [country, setCountry, loadingCountry, errorCountry] = useDetectCountry()
@@ -21,7 +23,8 @@ const App = () => {
 
   useEffect(() => {
     const language =
-      countries[country] && normalizeLanguage(countries[country].languages[0])
+      allCountries[country] &&
+      normalizeLanguage(allCountries[country].languages[0])
     setLocationLanguage(language)
   }, [country])
 
@@ -31,6 +34,8 @@ const App = () => {
 
   return (
     <div>
+      <Header extended={extendedNavigation} />
+
       <Navigation
         userLanguage={userLanguage}
         country={country}
@@ -42,14 +47,13 @@ const App = () => {
         extended={extendedNavigation}
         setExtended={setExtendedNavigation}
       />
-      {!extendedNavigation && (
-        <VocabularyList
-          dictionary={dictionary[locationLanguage]}
-          userDictionary={dictionary[userLanguage]}
-          userLanguage={userLanguage}
-          language={locationLanguage}
-        />
-      )}
+      <VocabularyList
+        dictionary={dictionary[locationLanguage]}
+        userDictionary={dictionary[userLanguage]}
+        userLanguage={userLanguage}
+        language={locationLanguage}
+        extended={extendedNavigation}
+      />
     </div>
   )
 }

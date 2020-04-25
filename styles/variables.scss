@@ -2,7 +2,8 @@
 // https://coolors.co/1b1b1b-bc6c69-d6cfc9-f2e8e5-a9ba9d
 // https://palx.jxnblk.com/
 
-$primary-color: #ed553b;
+// $primary-color: #ed553b;
+$primary-color: #2c3e50;
 $secondary-color: #3caea3;
 
 $black: #000000;
@@ -12,3 +13,10 @@ $gray-500: #adb4b9;
 $gray-300: #cfd3d7;
 $gray-100: #eceeef;
 $white: #ffffff;
+
+$short-transition: 200ms;
+$medium-transition: 400ms;
+$long-transition: 700ms;
+$short-transition-delay: 200ms;
+$medium-transition-delay: 400ms;
+$long-transition-delay: 700ms;

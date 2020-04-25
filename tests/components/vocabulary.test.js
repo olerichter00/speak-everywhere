@@ -14,10 +14,11 @@ describe("Vocabulary", () => {
       vocabulary: "hello",
     }
 
-    it("renders without crashing", () => {
+    it("renders correct translation", () => {
       const { queryByText } = render(<Vocabulary {...props} />)
 
       expect(queryByText(/hallo/i)).toBeTruthy()
+
       expect(queryByText(/ciao/i)).toBeTruthy()
     })
   })

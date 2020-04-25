@@ -3,7 +3,7 @@ import { Icon } from "semantic-ui-react"
 import className from "classnames"
 
 import { useAudio } from "../hooks"
-import { textToSpeechService } from "../utils"
+import textToSpeechService from "../utils/textToSpeechService"
 
 import styles from "../styles/vocabulary.module.scss"
 
@@ -17,7 +17,7 @@ const Vocabulary = ({ language, dictionary, userDictionary, vocabulary }) => {
       className={className(styles.vocabulary, {
         [styles.vocabularyWithPointer]: withAudio,
       })}
-      onClick={withAudio && (() => play())}
+      onClick={withAudio ? () => play() : undefined}
     >
       <h2 className={styles.title}>{dictionary[vocabulary]}</h2>
       <div className={styles.subtitle}>{userDictionary[vocabulary]}</div>

@@ -1,7 +1,7 @@
 import getConfig from "next/config"
 const { publicRuntimeConfig } = getConfig()
 
-const DEFAULT_LANGUAGE = "en-gb"
+import { DEFAULT_LANGUAGE } from "../utils/data"
 
 const supportedLanguages = {
   ca: "ca-es",

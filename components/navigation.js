@@ -1,11 +1,15 @@
 import React from "react"
 import { Icon } from "semantic-ui-react"
+import classNames from "classnames"
 
 import { LanguageSelect, CountrySelect, Button } from "."
-import { normalizeLanguage } from "../utils"
 
-import allLanguages from "../data/languages"
-import countries from "../data/countries"
+import {
+  allLanguages,
+  availableLanguages,
+  allCountries,
+  languagesFor,
+} from "../utils/data"
 
 import styles from "../styles/navigation.module.scss"
 
@@ -20,28 +24,19 @@ const Navigation = ({
   extended,
   setExtended,
 }) => {
-  const countryLanguages = countries[country].languages
-    .map(normalizeLanguage)
-    .reduce((result, language) => {
-      result[language] = allLanguages[language]
-      return result
-    }, {})
+  const countryLanguages = languagesFor(country)
+
+  const navigationClasses = classNames(styles.navigation, {
+    [styles.extendedNavigation]: extended,
+  })
+
+  const sectionClasses = classNames(styles.section, {
+    [styles.hiddenSection]: !extended,
+  })
 
   return (
-    <nav
-      className={
-        extended
-          ? `${styles.navigation} ${styles.extendedNavigation}`
-          : styles.navigation
-      }
-    >
-      <div
-        className={
-          extended
-            ? styles.section
-            : `${styles.section} ${styles.hiddenSection}`
-        }
-      >
+    <nav className={navigationClasses}>
+      <div className={sectionClasses}>
         <div className={styles.sectionContent}>
           <h1 className={styles.title}>Speak Everywhere</h1>
           <div className={styles.subtitle}>
@@ -49,8 +44,8 @@ const Navigation = ({
           </div>
           {errorDetectingCountry ? null : (
             <div className={styles.text}>
-              You are in <b>{country && countries[country].names["en"]}</b>.{" "}
-              <br />
+              You are in <b>{country && allCountries[country].names["en"]}</b>
+              . <br />
               It's time to learn some{" "}
               <b>
                 {countryLanguages &&
@@ -67,10 +62,10 @@ const Navigation = ({
           <LanguageSelect
             selected={userLanguage}
             setter={setUserLanguage}
-            languages={allLanguages}
+            languages={availableLanguages}
           />
         </div>
-        <div className={styles.selector}>
+        <div className={styles.arrow}>
           <Icon name="long arrow alternate right" />
         </div>
         <div className={styles.selector}>
@@ -85,21 +80,9 @@ const Navigation = ({
           />
         </div>
       </div>
-      <div
-        className={
-          extended
-            ? styles.section
-            : `${styles.section} ${styles.hiddenSection}`
-        }
-      >
-        <div className={styles.sectionContent}>
-          <Button
-            primary
-            style={{
-              margin: "1rem",
-            }}
-            onClick={() => setExtended(false)}
-          >
+      <div className={sectionClasses}>
+        <div className={styles.cta}>
+          <Button primary onClick={() => setExtended(false)}>
             Learn
           </Button>
         </div>

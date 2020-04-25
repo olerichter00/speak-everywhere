@@ -1,7 +1,7 @@
 import { useState } from "react"
 
-import { textToSpeechService } from "../utils"
-const DEFAULT_LANGUAGE = "en"
+import textToSpeechService from "../utils/textToSpeechService"
+import { DEFAULT_LANGUAGE } from "../utils/data"
 
 const useAudio = (text, language, { disabled = false } = {}) => {
   if (disabled) return () => {}

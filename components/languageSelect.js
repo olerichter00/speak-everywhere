@@ -1,9 +1,11 @@
 import React from "react"
 
 import { Select, Button } from "."
-import allLanguages from "../data/languages"
-
-const DEFAULT_LANGUAGE = "en"
+import {
+  availableLanguages,
+  allLanguages,
+  DEFAULT_LANGUAGE,
+} from "../utils/data"
 
 const LanguageSelect = ({ setter, selected, languages, showMoreButton }) => {
   if (!selected) return <></>
@@ -16,7 +18,7 @@ const LanguageSelect = ({ setter, selected, languages, showMoreButton }) => {
   const allOptions = () => {
     if (!showMoreButton) return null
 
-    return Object.entries(allLanguages).map(([language, names]) => ({
+    return Object.entries(availableLanguages).map(([language, names]) => ({
       key: language,
       text: names[DEFAULT_LANGUAGE],
     }))
