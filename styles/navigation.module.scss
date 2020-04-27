@@ -9,8 +9,6 @@
   top: 0;
   justify-content: center;
 
-  overflow: hidden;
-
   display: flex;
   flex-direction: column;
 
@@ -22,10 +20,7 @@
 
   box-shadow: 1px 1px 6px $gray-300;
 
-  z-index: 2;
-
   background: $white;
-
   color: $gray-900;
 
   transition: box-shadow $short-transition linear $medium-transition-delay,
