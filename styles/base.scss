@@ -1,3 +1,7 @@
+@import "_include-media";
+
+// Colors
+
 $primary-color: #2c3e50;
 $secondary-color: #3caea3;
 
@@ -8,6 +12,8 @@ $gray-500: #adb4b9;
 $gray-300: #cfd3d7;
 $gray-100: #eceeef;
 $white: #ffffff;
+
+// Transitions
 
 $short-transition: 200ms;
 $medium-transition: 400ms;
