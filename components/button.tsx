@@ -2,11 +2,18 @@ import React from "react"
 import classNames from "classnames"
 import styles from "../styles/button.module.scss"
 
-const Button = ({
+type Props = {
+  primary?: boolean
+  fluid?: boolean
+  children?: React.ReactNode
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
+}
+
+const Button: React.FC<Props> = ({
   primary = false,
   fluid = false,
-  children,
-  ...other
+  children = null,
+  onClick = null,
 } = {}) => {
   const classes = classNames(styles.button, {
     [styles.primary]: primary,
@@ -14,7 +21,7 @@ const Button = ({
   })
 
   return (
-    <button className={classes} {...other}>
+    <button className={classes} onClick={onClick}>
       {children}
     </button>
   )

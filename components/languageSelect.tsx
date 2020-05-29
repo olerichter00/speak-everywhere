@@ -5,9 +5,22 @@ import {
   availableLanguages,
   allLanguages,
   DEFAULT_LANGUAGE,
+  Languages,
 } from "../utils/data"
 
-const LanguageSelect = ({ setter, selected, languages, hasShowAllButton }) => {
+type Props = {
+  setter: Function
+  selected: string
+  languages: Languages
+  hasShowAllButton?: boolean
+}
+
+const LanguageSelect: React.FC<Props> = ({
+  setter,
+  selected,
+  languages,
+  hasShowAllButton = false,
+}) => {
   if (!selected) return <></>
 
   const options = Object.entries(languages).map(([language, names]) => ({

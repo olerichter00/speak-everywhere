@@ -5,7 +5,11 @@ import { useRouter } from "next/router"
 
 import styles from "../styles/header.module.scss"
 
-const Header = ({ extended = false } = {}) => {
+type Props = {
+  extended?: boolean
+}
+
+const Header: React.FC<Props> = ({ extended = false } = {}) => {
   const router = useRouter()
 
   const headerClasses = classNames(styles.header, {

@@ -4,9 +4,29 @@ import { useDetectCountry, useDetectUserLanguage } from "../hooks"
 import { allCountries, DEFAULT_LANGUAGE, DEFAULT_COUNTRY } from "../utils/data"
 import normalizeLanguage from "../utils/normalizeLanguage"
 
-export const AppContext = createContext()
+type ContextProps = {
+  country: string
+  setCountry: Function
+  loadingCountry: boolean
+  errorCountry: boolean
 
-const AppContextProvider = (props) => {
+  locationLanguage: string
+  setLocationLanguage: Function
+
+  userLanguage: string
+  setUserLanguage: Function
+
+  extendedNavigation: boolean
+  setExtendedNavigation: Function
+}
+
+export const AppContext = createContext<Partial<ContextProps>>({})
+
+type Props = {
+  children: React.ReactNode
+}
+
+const AppContextProvider: React.FC<Props> = ({ children }) => {
   const [country, setCountry, loadingCountry, errorCountry] = useDetectCountry()
 
   const [locationLanguage, setLocationLanguage] = useState(null)
@@ -44,7 +64,7 @@ const AppContextProvider = (props) => {
         setExtendedNavigation,
       }}
     >
-      {props.children}
+      {children}
     </AppContext.Provider>
   )
 }

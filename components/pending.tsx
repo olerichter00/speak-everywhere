@@ -3,7 +3,10 @@ import { Loader } from "semantic-ui-react"
 
 import styles from "../styles/pending.module.scss"
 
-const Pending = ({ text }) => (
+type Props = {
+  text: string
+}
+const Pending: React.FC<Props> = ({ text }) => (
   <div className={styles.pending}>
     <Loader active inline="centered">
       {text}

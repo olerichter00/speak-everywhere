@@ -1,7 +1,27 @@
-import countries from "../data/countries"
-import rawDictionary from "../data/dictionary"
-import languages from "../data/languages"
+import countries from "../data/countries.json"
+import rawDictionary from "../data/dictionary.json"
+import languages from "../data/languages.json"
 import normalizeLanguage from "./normalizeLanguage"
+
+export interface Dictionary {
+  [key: string]: string | null
+}
+
+export interface Languages {
+  [key: string]: {
+    names: {
+      en: string
+      languages: Array<{ [key: string]: string }>
+    }
+  }
+}
+
+export interface Countries {
+  [key: string]: {
+    names: any
+    languages: Array<string>
+  }
+}
 
 export const DEFAULT_LANGUAGE = "en"
 export const DEFAULT_COUNTRY = "DE"
@@ -23,7 +43,7 @@ export const availableLanguages = Object.keys(dictionary).reduce(
   {},
 )
 
-export const languagesFor = (country) => {
+export const languagesFor = (country: string): Languages => {
   const countryLanguages = countries[country].languages
     .map(normalizeLanguage)
     .reduce((result, language) => {
@@ -34,6 +54,6 @@ export const languagesFor = (country) => {
   return countryLanguages
 }
 
-export const dictionaryFor = (language) => {
+export const dictionaryFor = (language: string): Dictionary => {
   return dictionary[normalizeLanguage(language)]
 }

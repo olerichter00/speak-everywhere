@@ -1,16 +1,20 @@
 import React, { useContext } from "react"
 
 import { AppContext, Select, Flag, Button } from "."
-import { DEFAULT_LANGUAGE, allCountries } from "../utils/data"
+import { DEFAULT_LANGUAGE, allCountries, Countries } from "../utils/data"
 
-const CountrySelect = () => {
+type Props = {
+  countries?: Countries
+}
+
+const CountrySelect: React.FC<Props> = ({ countries = allCountries } = {}) => {
   const { country, setCountry } = useContext(AppContext)
 
   if (!country) return <></>
 
-  const options = Object.entries(allCountries).map(([iso, { names }]) => ({
+  const options = Object.entries(countries).map(([iso, country]) => ({
     key: iso,
-    text: names[DEFAULT_LANGUAGE],
+    text: country["names"][DEFAULT_LANGUAGE],
   }))
 
   return (

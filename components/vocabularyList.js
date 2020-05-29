@@ -30,7 +30,7 @@ const VocabularyList = () => {
       })}
     >
       {translationsFound ? (
-        Object.keys(currentDictionary).map((vocabulary) => (
+        Object.keys(currentDictionary).map(vocabulary => (
           <SwitchTransition key={vocabulary}>
             <CSSTransition
               key={`${userLanguage}-${locationLanguage}-${vocabulary}`}

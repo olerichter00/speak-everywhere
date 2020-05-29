@@ -1,15 +1,18 @@
 import { useState, useEffect } from "react"
 
 import locationService from "../utils/locationService"
-import countries from "../data/countries"
+import { allCountries, Countries } from "../utils/data"
 
-const useDetectCountry = () => {
+const useDetectCountry = (
+  countries: Countries = allCountries,
+  randomCountry: boolean = false,
+): [string, Function, boolean, boolean] => {
   const [country, setCountry] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
 
   useEffect(() => {
-    if (false) {
+    if (randomCountry) {
       setTimeout(() => {
         setCountry(
           Object.keys(countries)[

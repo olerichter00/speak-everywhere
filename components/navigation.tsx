@@ -6,7 +6,7 @@ import { AppContext, LanguageSelect, CountrySelect, Button } from "."
 import { availableLanguages, allCountries, languagesFor } from "../utils/data"
 import styles from "../styles/navigation.module.scss"
 
-const Navigation = () => {
+const Navigation: React.FC = () => {
   const {
     extendedNavigation,
     setExtendedNavigation,

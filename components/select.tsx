@@ -5,21 +5,36 @@ import { Button } from "."
 
 import styles from "../styles/select.module.scss"
 
-const Select = ({
+type Option = {
+  key: string
+  text: string
+}
+
+type Props = {
+  title: string
+  setter: Function
+  selected: string
+  trigger: React.ReactNode
+  options: Array<Option>
+  hasShowAllButton?: boolean
+  allOptions?: Function
+}
+
+const Select: React.FC<Props> = ({
   title,
   setter,
   selected,
   trigger,
   options,
-  hasShowAllButton,
-  allOptions,
+  hasShowAllButton = false,
+  allOptions = null,
 }) => {
   if (!selected) return <></>
 
   const [open, setOpen] = useState(false)
   const [showAllOptions, setshowAllOptions] = useState(false)
 
-  const onSelect = (value) => {
+  const onSelect = value => {
     setter(value)
 
     onClose()

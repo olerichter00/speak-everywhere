@@ -3,8 +3,12 @@ import { useState } from "react"
 import textToSpeechService from "../utils/textToSpeechService"
 import { DEFAULT_LANGUAGE } from "../utils/data"
 
-const useAudio = (text, language, { disabled = false } = {}) => {
-  if (disabled) return () => {}
+const useAudio = (
+  text: string,
+  language: string,
+  { disabled = false }: { disabled?: boolean } = {},
+): [Function, boolean, boolean] => {
+  if (disabled) return [() => {}, false, false]
 
   const [error, setError] = useState(false)
   const [playing, setPlaying] = useState(false)
@@ -14,8 +18,6 @@ const useAudio = (text, language, { disabled = false } = {}) => {
       textToSpeechService.getSoundUrl(text, language || DEFAULT_LANGUAGE),
     ),
   )
-
-  audio.pla
 
   const play = async () => {
     try {

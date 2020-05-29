@@ -3,7 +3,7 @@ import React from "react"
 import { Header } from "../components"
 import styles from "../styles/about.module.scss"
 
-const About = () => (
+const About: React.FC = () => (
   <div>
     <Header />
     <main className={styles.about}>
