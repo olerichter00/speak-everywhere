@@ -1,7 +1,7 @@
-import React from "react"
-import classNames from "classnames"
+import React from 'react'
+import classNames from 'classnames'
 
-import styles from "../styles/flag.module.scss"
+import styles from '../styles/flag.module.scss'
 type Props = { name: string }
 
 const Flag: React.FC<Props> = ({ name }) => (

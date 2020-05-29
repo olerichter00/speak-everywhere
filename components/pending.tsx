@@ -1,7 +1,7 @@
-import React from "react"
-import { Loader } from "semantic-ui-react"
+import React from 'react'
+import { Loader } from 'semantic-ui-react'
 
-import styles from "../styles/pending.module.scss"
+import styles from '../styles/pending.module.scss'
 
 type Props = {
   text: string

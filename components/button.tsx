@@ -1,6 +1,6 @@
-import React from "react"
-import classNames from "classnames"
-import styles from "../styles/button.module.scss"
+import React from 'react'
+import classNames from 'classnames'
+import styles from '../styles/button.module.scss'
 
 type Props = {
   primary?: boolean

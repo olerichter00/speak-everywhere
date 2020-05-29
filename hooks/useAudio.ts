@@ -1,7 +1,7 @@
-import { useState } from "react"
+import { useState } from 'react'
 
-import textToSpeechService from "../utils/textToSpeechService"
-import { DEFAULT_LANGUAGE } from "../utils/data"
+import textToSpeechService from '../utils/textToSpeechService'
+import { DEFAULT_LANGUAGE } from '../utils/defaults'
 
 const useAudio = (
   text: string,

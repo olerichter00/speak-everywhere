@@ -1,7 +1,7 @@
-import React, { useContext } from "react"
+import React, { useContext } from 'react'
 
-import { AppContext, Header, VocabularyList, Navigation, Pending } from "."
-import styles from "../styles/app.module.scss"
+import { AppContext, Header, VocabularyList, Navigation, Pending } from '.'
+import styles from '../styles/app.module.scss'
 
 const App: React.FC = () => {
   const { loadingCountry, extendedNavigation } = useContext(AppContext)

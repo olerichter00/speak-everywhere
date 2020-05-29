@@ -1,7 +1,7 @@
-import React from "react"
+import React from 'react'
 
-import { Header } from "../components"
-import styles from "../styles/about.module.scss"
+import { Header } from '../components'
+import styles from '../styles/about.module.scss'
 
 const About: React.FC = () => (
   <div>
@@ -14,11 +14,11 @@ const About: React.FC = () => (
         learn the local language.
       </p>
       <p>
-        The app was written by{" "}
+        The app was written by{' '}
         <a href="https://www.olerichter.eu/" target="_blank" rel="noopener">
           Ole Richter
-        </a>{" "}
-        and is{" "}
+        </a>{' '}
+        and is{' '}
         <a
           href="https://github.com/olerichter00/speak-everywhere"
           target="_blank"

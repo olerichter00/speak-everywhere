@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect } from 'react'
 
-import normalizeLanguage from "../utils/normalizeLanguage"
+import normalizeLanguage from '../utils/normalizeLanguage'
 
 const useDetectUserLanguage = (defaultLanguage: string): [string, Function] => {
   const [language, setLanguage] = useState(null)
 
   useEffect(() => {
     const detectedLanguage = normalizeLanguage(
-      require("detect-browser-language")(),
+      require('detect-browser-language')(),
     )
 
     setLanguage(detectedLanguage || defaultLanguage)
