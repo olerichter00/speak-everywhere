@@ -1,10 +1,10 @@
-import "semantic-ui-css/semantic.min.css"
-
+import { AppProps } from "next/app"
 import Head from "next/head"
 
+import "semantic-ui-css/semantic.min.css"
 import "../styles/main.scss"
 
-export default function MyApp({ Component, pageProps }) {
+export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <div>
       <Head>
