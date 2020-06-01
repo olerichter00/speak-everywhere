@@ -1,41 +1,41 @@
-const { Translate } = require("@google-cloud/translate").v2
-const fs = require("fs")
+const { Translate } = require('@google-cloud/translate').v2
+const fs = require('fs')
 
 const translate = new Translate()
 
-const DICTIONARY_FILE = "./data/dictionary.json"
+const TRANSLATION_FILE = './data/translation.json'
 
 const vocabularies = {
-  hello: "Hello",
-  thanks: "Thank You",
-  sorry: "I’m Sorry",
-  yes: "Yes",
-  no: "No",
-  "How are you?": "How are you?",
-  goodbye: "Goodbye",
+  hello: 'Hello',
+  thanks: 'Thank You',
+  sorry: 'I’m Sorry',
+  yes: 'Yes',
+  no: 'No',
+  'How are you?': 'How are you?',
+  goodbye: 'Goodbye',
 }
 
-const dictionary = JSON.parse(fs.readFileSync(DICTIONARY_FILE))
+const translation = JSON.parse(fs.readFileSync(TRANSLATION_FILE))
 
 translateAll()
 
 async function translateAll() {
-  console.log("START")
+  console.log('START')
 
-  const newDictionary = {}
+  const newTranslation = {}
 
   await asyncForEach(
-    Object.keys(dictionary),
+    Object.keys(translation),
     async (language, index) => {
       const newTranslations = {}
 
       try {
         await asyncForEach(
           Object.keys(vocabularies),
-          async (vocabulary) => {
-            if (dictionary[language][vocabulary]) {
+          async vocabulary => {
+            if (translation[language][vocabulary]) {
               newTranslations[vocabulary] = capitalize(
-                dictionary[language][vocabulary],
+                translation[language][vocabulary],
               )
             } else {
               newTranslations[vocabulary] = await translateText(
@@ -49,17 +49,20 @@ async function translateAll() {
       } catch (error) {
         console.error(`ERROR (language: ${language})`)
       } finally {
-        console.log(`${index + 1}/${Object.keys(dictionary).length}`)
+        console.log(`${index + 1}/${Object.keys(translation).length}`)
       }
 
-      newDictionary[language] = { ...dictionary[language], ...newTranslations }
+      newTranslation[language] = {
+        ...translation[language],
+        ...newTranslations,
+      }
     },
     {},
   )
 
-  fs.writeFileSync(DICTIONARY_FILE, JSON.stringify(newDictionary))
+  fs.writeFileSync(TRANSLATION_FILE, JSON.stringify(newTranslation))
 
-  console.log("FINISHED")
+  console.log('FINISHED')
 }
 
 async function translateText(text, target) {
@@ -75,7 +78,7 @@ async function translateText(text, target) {
 }
 
 function capitalize(input) {
-  return input.replace(/^\w/, (c) => c.toUpperCase())
+  return input.replace(/^\w/, c => c.toUpperCase())
 }
 
 async function asyncForEach(array, callback) {

@@ -1,13 +1,14 @@
-import React, { useContext } from "react"
-import { Icon } from "semantic-ui-react"
-import classNames from "classnames"
+import React, { useContext } from 'react'
+import { Icon } from 'semantic-ui-react'
+import classNames from 'classnames'
 
-import { AppContext, LanguageSelect, CountrySelect, Button } from "."
-import { availableLanguages, allCountries, languagesFor } from "../utils/data"
-import styles from "../styles/navigation.module.scss"
+import { AppContext, LanguageSelect, CountrySelect, Button } from '.'
+import styles from '../styles/navigation.module.scss'
 
 const Navigation: React.FC = () => {
   const {
+    countryService,
+    languageService,
     extendedNavigation,
     setExtendedNavigation,
     country,
@@ -18,7 +19,7 @@ const Navigation: React.FC = () => {
     setLocationLanguage,
   } = useContext(AppContext)
 
-  const countryLanguages = languagesFor(country)
+  const countryLanguages = countryService.languagesForCountry(country)
 
   const navigationClasses = classNames(styles.navigation, {
     [styles.extendedNavigation]: extendedNavigation,
@@ -38,13 +39,16 @@ const Navigation: React.FC = () => {
           </div>
           {errorCountry ? null : (
             <div className={styles.text}>
-              You are in <b>{country && allCountries[country].names["en"]}</b>
+              You are in{' '}
+              <b>
+                {country && countryService.allCountries[country].name['en']}
+              </b>
               . <br />
-              It's time to learn some{" "}
+              It's time to learn some{' '}
               <b>
                 {countryLanguages &&
                   countryLanguages[locationLanguage] &&
-                  countryLanguages[locationLanguage]["en"]}
+                  countryLanguages[locationLanguage]['en']}
                 !
               </b>
             </div>
@@ -56,7 +60,7 @@ const Navigation: React.FC = () => {
           <LanguageSelect
             selected={userLanguage}
             setter={setUserLanguage}
-            languages={availableLanguages}
+            languages={languageService.availableLanguages}
           />
         </div>
         <div className={styles.arrow}>

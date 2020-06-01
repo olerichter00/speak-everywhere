@@ -1,22 +1,25 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from 'react'
 
-import locationService from "../utils/locationService"
-import { allCountries, Countries } from "../utils/data"
+import locationService from '../utils/locationService'
+import { AppContext } from '../components/appContext'
 
 const useDetectCountry = (
-  countries: Countries = allCountries,
   randomCountry: boolean = false,
 ): [string, Function, boolean, boolean] => {
-  const [country, setCountry] = useState(null)
+  const [currentCountry, setCurrentCountry] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
+
+  const { countryService } = useContext(AppContext)
 
   useEffect(() => {
     if (randomCountry) {
       setTimeout(() => {
-        setCountry(
-          Object.keys(countries)[
-            Math.floor(Math.random() * Object.keys(countries).length)
+        setCurrentCountry(
+          Object.keys(countryService.allCountries)[
+            Math.floor(
+              Math.random() * Object.keys(countryService.allCountries).length,
+            )
           ],
         )
         setLoading(false)
@@ -31,9 +34,9 @@ const useDetectCountry = (
 
         const location = await locationService.locate()
 
-        setCountry(location.country)
+        setCurrentCountry(location.country)
       } catch (error) {
-        console.error("Error detecting country: ", error)
+        console.error('Error detecting country: ', error)
 
         setError(true)
       } finally {
@@ -42,9 +45,9 @@ const useDetectCountry = (
     }
 
     fetchCountry()
-  }, [countries])
+  }, [])
 
-  return [country, setCountry, loading, error]
+  return [currentCountry, setCurrentCountry, loading, error]
 }
 
 export default useDetectCountry

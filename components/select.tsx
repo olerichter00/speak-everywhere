@@ -1,9 +1,9 @@
-import React, { useState } from "react"
-import { Modal } from "semantic-ui-react"
+import React, { useState } from 'react'
+import { Modal } from 'semantic-ui-react'
 
-import { Button } from "."
+import { Button } from '.'
 
-import styles from "../styles/select.module.scss"
+import styles from '../styles/select.module.scss'
 
 type Option = {
   key: string

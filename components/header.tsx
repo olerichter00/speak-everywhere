@@ -1,9 +1,9 @@
-import React from "react"
-import Link from "next/link"
-import classNames from "classnames"
-import { useRouter } from "next/router"
+import React from 'react'
+import Link from 'next/link'
+import classNames from 'classnames'
+import { useRouter } from 'next/router'
 
-import styles from "../styles/header.module.scss"
+import styles from '../styles/header.module.scss'
 
 type Props = {
   extended?: boolean
@@ -17,7 +17,7 @@ const Header: React.FC<Props> = ({ extended = false } = {}) => {
   })
 
   const onLogoClick = () =>
-    router.pathname === "/" ? window.location.reload() : router.push("/")
+    router.pathname === '/' ? window.location.reload() : router.push('/')
 
   return (
     <div className={headerClasses}>

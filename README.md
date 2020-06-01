@@ -1,6 +1,6 @@
 ![Speak Everywhere](./public/logo.png)
 
-**Speak Everywhere** is a dictionary app that automatically
+**Speak Everywhere** is a translation app that automatically
 detects the users location and provides basic vocabulary and phrases of the local language. It's intended for travellers who only spend a short time in one country.
 
 The app is available at [speakeverywhere.now.sh](https://speakeverywhere.now.sh/).

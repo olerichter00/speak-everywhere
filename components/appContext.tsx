@@ -1,10 +1,18 @@
-import React, { createContext, useState, useEffect } from "react"
+import React, { createContext, useState, useEffect } from 'react'
 
-import { useDetectCountry, useDetectUserLanguage } from "../hooks"
-import { allCountries, DEFAULT_LANGUAGE, DEFAULT_COUNTRY } from "../utils/data"
-import normalizeLanguage from "../utils/normalizeLanguage"
+import { useDetectCountry, useDetectUserLanguage } from '../hooks'
+
+import { DEFAULT_LANGUAGE, DEFAULT_COUNTRY } from '../utils/defaults'
+import { CountryService } from '../services/countryService'
+import { LanguageService } from '../services/languageService'
+import { TranslationService } from '../services/translationService'
+import normalizeLanguage from '../utils/normalizeLanguage'
 
 type ContextProps = {
+  countryService: CountryService
+  languageService: LanguageService
+  translationService: TranslationService
+
   country: string
   setCountry: Function
   loadingCountry: boolean
@@ -23,10 +31,18 @@ type ContextProps = {
 export const AppContext = createContext<Partial<ContextProps>>({})
 
 type Props = {
+  countryService: CountryService
+  languageService: LanguageService
+  translationService: TranslationService
   children: React.ReactNode
 }
 
-const AppContextProvider: React.FC<Props> = ({ children }) => {
+const AppContextProvider: React.FC<Props> = ({
+  countryService,
+  languageService,
+  translationService,
+  children,
+}) => {
   const [country, setCountry, loadingCountry, errorCountry] = useDetectCountry()
 
   const [locationLanguage, setLocationLanguage] = useState(null)
@@ -39,8 +55,8 @@ const AppContextProvider: React.FC<Props> = ({ children }) => {
 
   useEffect(() => {
     const language =
-      allCountries[country] &&
-      normalizeLanguage(allCountries[country].languages[0])
+      countryService.allCountries[country] &&
+      normalizeLanguage(countryService.allCountries[country].languages[0])
     setLocationLanguage(language)
   }, [country])
 
@@ -49,6 +65,9 @@ const AppContextProvider: React.FC<Props> = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
+        countryService,
+        languageService,
+        translationService,
         country,
         setCountry,
         loadingCountry,
