@@ -3,6 +3,11 @@ const { publicRuntimeConfig } = getConfig()
 
 import { DEFAULT_LANGUAGE } from '../utils/defaults'
 
+export interface TextToSpeechService {
+  isLanguageSupported: Function
+  getSoundUrl: Function
+}
+
 const supportedLanguages = {
   ca: 'ca-es',
   zh: 'zh-cn',
@@ -32,10 +37,10 @@ const supportedLanguages = {
   sv: 'sv-se',
 }
 
-const isLanguageSupported = language =>
+const isLanguageSupported = (language: string): boolean =>
   supportedLanguages[language] ? true : false
 
-const getSoundUrl = (text, language) => {
+const getSoundUrl = (text: string, language: string): string => {
   return `${publicRuntimeConfig.VOICERSS_URL}&hl=${
     supportedLanguages[language] || DEFAULT_LANGUAGE
   }&src=${text}&r=${1}`

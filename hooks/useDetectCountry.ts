@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react'
 
-import locationService from '../utils/locationService'
+import locationService from '../services/locationService'
 import { AppContext } from '../components/appContext'
 
 const useDetectCountry = (

@@ -3,7 +3,7 @@ import { Icon } from 'semantic-ui-react'
 import className from 'classnames'
 
 import { useAudio } from '../hooks'
-import textToSpeechService from '../utils/textToSpeechService'
+import textToSpeechService from '../services/textToSpeechService'
 import { Translation } from '../services/translationService'
 
 import styles from '../styles/vocabulary.module.scss'
