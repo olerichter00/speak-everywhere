@@ -6,12 +6,17 @@ import { DEFAULT_LANGUAGE, DEFAULT_COUNTRY } from '../utils/defaults'
 import { CountryService } from '../services/countryService'
 import { LanguageService } from '../services/languageService'
 import { TranslationService } from '../services/translationService'
+import { LocationService } from '../services/locationService'
+import { TextToSpeechService } from '../services/textToSpeechService'
 import normalizeLanguage from '../utils/normalizeLanguage'
 
 type ContextProps = {
   countryService: CountryService
   languageService: LanguageService
   translationService: TranslationService
+
+  locationService: LocationService
+  textToSpeechService: TextToSpeechService
 
   country: string
   setCountry: Function
@@ -34,6 +39,8 @@ type Props = {
   countryService: CountryService
   languageService: LanguageService
   translationService: TranslationService
+  locationService: LocationService
+  textToSpeechService: TextToSpeechService
   children: React.ReactNode
 }
 
@@ -41,6 +48,8 @@ const AppContextProvider: React.FC<Props> = ({
   countryService,
   languageService,
   translationService,
+  locationService,
+  textToSpeechService,
   children,
 }) => {
   const [country, setCountry, loadingCountry, errorCountry] = useDetectCountry()
@@ -68,6 +77,8 @@ const AppContextProvider: React.FC<Props> = ({
         countryService,
         languageService,
         translationService,
+        locationService,
+        textToSpeechService,
         country,
         setCountry,
         loadingCountry,

@@ -1,20 +1,7 @@
 import React from 'react'
 
-import {
-  countryService,
-  languageService,
-  translationService,
-} from '../services'
-import { App, AppContextProvider } from '../components'
+import { SpeakEverywhere } from '../components'
 
-const Index: React.FC = () => (
-  <AppContextProvider
-    countryService={countryService}
-    languageService={languageService}
-    translationService={translationService}
-  >
-    <App />
-  </AppContextProvider>
-)
+const Index: React.FC = () => <SpeakEverywhere />
 
 export default Index
