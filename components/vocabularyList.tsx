@@ -2,20 +2,19 @@ import React, { useContext } from 'react'
 import { CSSTransition, SwitchTransition } from 'react-transition-group'
 import classNames from 'classnames'
 
-import { Vocabulary, AppContext } from '.'
+import { Vocabulary, AppContext, ServiceContext } from '.'
 import { DEFAULT_LANGUAGE } from '../utils/defaults'
 import fadeStyles from '../styles/transitions/fade.module.scss'
 import styles from '../styles/vocabularyList.module.scss'
 
 const VocabularyList: React.FC = () => {
   const {
-    languageService,
-    translationService,
     extendedNavigation,
     locationLanguage,
     userLanguage,
     loadingCountry,
   } = useContext(AppContext)
+  const { languageService, translationService } = useContext(ServiceContext)
 
   if (loadingCountry) return <></>
 

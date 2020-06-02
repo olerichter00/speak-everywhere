@@ -2,13 +2,17 @@ import React, { useContext } from 'react'
 import { Icon } from 'semantic-ui-react'
 import classNames from 'classnames'
 
-import { AppContext, LanguageSelect, CountrySelect, Button } from '.'
+import {
+  AppContext,
+  ServiceContext,
+  LanguageSelect,
+  CountrySelect,
+  Button,
+} from '.'
 import styles from '../styles/navigation.module.scss'
 
 const Navigation: React.FC = () => {
   const {
-    countryService,
-    languageService,
     extendedNavigation,
     setExtendedNavigation,
     country,
@@ -18,6 +22,7 @@ const Navigation: React.FC = () => {
     locationLanguage,
     setLocationLanguage,
   } = useContext(AppContext)
+  const { countryService, languageService } = useContext(ServiceContext)
 
   const countryLanguages = countryService.languagesForCountry(country)
 

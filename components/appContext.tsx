@@ -1,23 +1,11 @@
-import React, { createContext, useState, useEffect } from 'react'
+import React, { createContext, useState, useEffect, useContext } from 'react'
 
 import { useDetectCountry, useDetectUserLanguage } from '../hooks'
-
 import { DEFAULT_LANGUAGE, DEFAULT_COUNTRY } from '../utils/defaults'
-import { CountryService } from '../services/countryService'
-import { LanguageService } from '../services/languageService'
-import { TranslationService } from '../services/translationService'
-import { LocationService } from '../services/locationService'
-import { TextToSpeechService } from '../services/textToSpeechService'
 import normalizeLanguage from '../utils/normalizeLanguage'
+import { ServiceContext } from './'
 
 type ContextProps = {
-  countryService: CountryService
-  languageService: LanguageService
-  translationService: TranslationService
-
-  locationService: LocationService
-  textToSpeechService: TextToSpeechService
-
   country: string
   setCountry: Function
   loadingCountry: boolean
@@ -36,22 +24,10 @@ type ContextProps = {
 export const AppContext = createContext<Partial<ContextProps>>({})
 
 type Props = {
-  countryService: CountryService
-  languageService: LanguageService
-  translationService: TranslationService
-  locationService: LocationService
-  textToSpeechService: TextToSpeechService
   children: React.ReactNode
 }
 
-const AppContextProvider: React.FC<Props> = ({
-  countryService,
-  languageService,
-  translationService,
-  locationService,
-  textToSpeechService,
-  children,
-}) => {
+const AppContextProvider: React.FC<Props> = ({ children }) => {
   const [country, setCountry, loadingCountry, errorCountry] = useDetectCountry()
 
   const [locationLanguage, setLocationLanguage] = useState(null)
@@ -61,6 +37,8 @@ const AppContextProvider: React.FC<Props> = ({
   )
 
   const [extendedNavigation, setExtendedNavigation] = useState(true)
+
+  const { countryService } = useContext(ServiceContext)
 
   useEffect(() => {
     const language =
@@ -74,11 +52,6 @@ const AppContextProvider: React.FC<Props> = ({
   return (
     <AppContext.Provider
       value={{
-        countryService,
-        languageService,
-        translationService,
-        locationService,
-        textToSpeechService,
         country,
         setCountry,
         loadingCountry,

@@ -1,10 +1,11 @@
 import React, { useContext } from 'react'
 
-import { AppContext, Select, Flag, Button } from '.'
+import { AppContext, ServiceContext, Select, Flag, Button } from '.'
 import { DEFAULT_LANGUAGE } from '../utils/defaults'
 
 const CountrySelect: React.FC = () => {
-  const { countryService, country, setCountry } = useContext(AppContext)
+  const { countryService } = useContext(ServiceContext)
+  const { country, setCountry } = useContext(AppContext)
 
   if (!country) return <></>
 

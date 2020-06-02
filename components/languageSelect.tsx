@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 
-import { Select, Button, AppContext } from '.'
+import { Select, Button, ServiceContext } from '.'
 import { DEFAULT_LANGUAGE } from '../utils/defaults'
 import { Languages } from '../services/languageService'
 
@@ -19,7 +19,7 @@ const LanguageSelect: React.FC<Props> = ({
 }) => {
   if (!selected) return <></>
 
-  const { languageService } = useContext(AppContext)
+  const { languageService } = useContext(ServiceContext)
 
   const options = Object.entries(languages).map(([language, names]) => ({
     key: language,

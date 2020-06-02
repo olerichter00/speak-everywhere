@@ -11,3 +11,7 @@ export { default as Flag } from './flag'
 export { default as App } from './app'
 export { default as SpeakEverywhere } from './speakEverywhere'
 export { default as AppContextProvider, AppContext } from './appContext'
+export {
+  default as ServiceContextProvider,
+  ServiceContext,
+} from './serviceContext'

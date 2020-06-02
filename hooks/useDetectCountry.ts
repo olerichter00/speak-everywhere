@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react'
 
 import locationService from '../services/locationService'
-import { AppContext } from '../components/appContext'
+import { ServiceContext } from '../components'
 
 const useDetectCountry = (
   randomCountry: boolean = false,
@@ -10,7 +10,7 @@ const useDetectCountry = (
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
 
-  const { countryService } = useContext(AppContext)
+  const { countryService } = useContext(ServiceContext)
 
   useEffect(() => {
     if (randomCountry) {

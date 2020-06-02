@@ -7,18 +7,20 @@ import {
   locationService,
   textToSpeechService,
 } from '../services'
-import { App, AppContextProvider } from '.'
+import { App, AppContextProvider, ServiceContextProvider } from '.'
 
 const SpeakEverywhere: React.FC = () => (
-  <AppContextProvider
+  <ServiceContextProvider
     countryService={countryService}
     languageService={languageService}
     translationService={translationService}
     locationService={locationService}
     textToSpeechService={textToSpeechService}
   >
-    <App />
-  </AppContextProvider>
+    <AppContextProvider>
+      <App />
+    </AppContextProvider>
+  </ServiceContextProvider>
 )
 
 export default SpeakEverywhere
