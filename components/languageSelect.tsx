@@ -21,8 +21,6 @@ const LanguageSelect: React.FC<Props> = ({
 
   const { languageService } = useContext(ServiceContext)
 
-  debugger
-
   const options = Object.entries(languages)
     .filter(([_language, names]) => names !== undefined)
     .map(([language, names]) => ({
