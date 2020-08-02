@@ -1,7 +1,6 @@
 import { useState, useEffect, useContext } from 'react'
 
 import locationService from '../services/locationService'
-import { ServiceContext } from '../components'
 
 const useDetectCountry = (): [string, Function, boolean, boolean] => {
   const [currentCountry, setCurrentCountry] = useState(null)
