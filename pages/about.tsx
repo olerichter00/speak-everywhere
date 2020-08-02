@@ -11,7 +11,7 @@ const About: React.FC = () => (
       <p>
         <b>Speak Everywhere</b> is a language learning app that automatically
         detects the user's location and provides basic vocabulary and phrases to
-        learn the local language.
+        help learning the local language.
       </p>
       <p>
         The app was written by{' '}
